@@ -385,52 +385,52 @@ public class GroupBuyDiscountExample {
             return (Criteria) this;
         }
 
-        public Criteria andDiscountTypeEqualTo(Byte value) {
+        public Criteria andDiscountTypeEqualTo(Integer value) {
             addCriterion("discount_type =", value, "discountType");
             return (Criteria) this;
         }
 
-        public Criteria andDiscountTypeNotEqualTo(Byte value) {
+        public Criteria andDiscountTypeNotEqualTo(Integer value) {
             addCriterion("discount_type <>", value, "discountType");
             return (Criteria) this;
         }
 
-        public Criteria andDiscountTypeGreaterThan(Byte value) {
+        public Criteria andDiscountTypeGreaterThan(Integer value) {
             addCriterion("discount_type >", value, "discountType");
             return (Criteria) this;
         }
 
-        public Criteria andDiscountTypeGreaterThanOrEqualTo(Byte value) {
+        public Criteria andDiscountTypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("discount_type >=", value, "discountType");
             return (Criteria) this;
         }
 
-        public Criteria andDiscountTypeLessThan(Byte value) {
+        public Criteria andDiscountTypeLessThan(Integer value) {
             addCriterion("discount_type <", value, "discountType");
             return (Criteria) this;
         }
 
-        public Criteria andDiscountTypeLessThanOrEqualTo(Byte value) {
+        public Criteria andDiscountTypeLessThanOrEqualTo(Integer value) {
             addCriterion("discount_type <=", value, "discountType");
             return (Criteria) this;
         }
 
-        public Criteria andDiscountTypeIn(List<Byte> values) {
+        public Criteria andDiscountTypeIn(List<Integer> values) {
             addCriterion("discount_type in", values, "discountType");
             return (Criteria) this;
         }
 
-        public Criteria andDiscountTypeNotIn(List<Byte> values) {
+        public Criteria andDiscountTypeNotIn(List<Integer> values) {
             addCriterion("discount_type not in", values, "discountType");
             return (Criteria) this;
         }
 
-        public Criteria andDiscountTypeBetween(Byte value1, Byte value2) {
+        public Criteria andDiscountTypeBetween(Integer value1, Integer value2) {
             addCriterion("discount_type between", value1, value2, "discountType");
             return (Criteria) this;
         }
 
-        public Criteria andDiscountTypeNotBetween(Byte value1, Byte value2) {
+        public Criteria andDiscountTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("discount_type not between", value1, value2, "discountType");
             return (Criteria) this;
         }

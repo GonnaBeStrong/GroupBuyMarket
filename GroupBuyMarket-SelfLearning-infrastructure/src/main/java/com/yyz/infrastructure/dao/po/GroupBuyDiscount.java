@@ -11,7 +11,7 @@ public class GroupBuyDiscount {
 
     private String discountDesc;
 
-    private Byte discountType;
+    private Integer discountType;
 
     private String marketPlan;
 
@@ -55,11 +55,11 @@ public class GroupBuyDiscount {
         this.discountDesc = discountDesc;
     }
 
-    public Byte getDiscountType() {
+    public Integer getDiscountType() {
         return discountType;
     }
 
-    public void setDiscountType(Byte discountType) {
+    public void setDiscountType(Integer discountType) {
         this.discountType = discountType;
     }
 

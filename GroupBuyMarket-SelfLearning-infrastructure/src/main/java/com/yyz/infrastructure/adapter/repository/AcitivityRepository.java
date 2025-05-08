@@ -2,6 +2,7 @@ package com.yyz.infrastructure.adapter.repository;
 
 import com.google.common.collect.Iterables;
 import com.yyz.domain.activity.adapter.repository.IActivityRepository;
+import com.yyz.domain.activity.model.valobj.DiscountTypeEnum;
 import com.yyz.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
 import com.yyz.domain.activity.model.valobj.SkuVO;
 import com.yyz.infrastructure.dao.GroupBuyActivityMapper;
@@ -69,7 +70,7 @@ public class AcitivityRepository implements IActivityRepository {
         GroupBuyActivityDiscountVO.GroupBuyDiscount groupBuyDiscount = GroupBuyActivityDiscountVO.GroupBuyDiscount.builder()
                 .discountName(discount.getDiscountName())
                 .discountDesc(discount.getDiscountDesc())
-                .discountType(discount.getDiscountType())
+                .discountType(DiscountTypeEnum.get(discount.getDiscountType()))
                 .marketPlan(discount.getMarketPlan())
                 .marketExpr(discount.getMarketExpr())
                 .tagId(discount.getTagId())
