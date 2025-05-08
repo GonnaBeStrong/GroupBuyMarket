@@ -23,8 +23,8 @@ thread:
 spring:
   datasource:
     username: group_buy_market
-    password: Yanyizhou2003
-    url: jdbc:mysql://rm-cn-0gx47bpzh001zi3o.rwlb.cn-chengdu.rds.aliyuncs.com/group_buy_market?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai&useSSL=true
+    password:
+    url:
     driver-class-name: com.mysql.cj.jdbc.Driver
   hikari:
     pool-name: Retail_HikariCP
