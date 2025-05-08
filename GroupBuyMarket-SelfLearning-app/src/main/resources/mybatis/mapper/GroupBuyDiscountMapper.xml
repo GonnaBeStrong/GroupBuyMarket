@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yyz.infrastructure.dao.GroupBuyDiscountMapper">
+  <resultMap id="BaseResultMap" type="com.yyz.infrastructure.dao.po.GroupBuyDiscount">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="discount_id" jdbcType="VARCHAR" property="discountId" />
+    <result column="discount_name" jdbcType="VARCHAR" property="discountName" />
+    <result column="discount_desc" jdbcType="VARCHAR" property="discountDesc" />
+    <result column="discount_type" jdbcType="BIT" property="discountType" />
+    <result column="market_plan" jdbcType="VARCHAR" property="marketPlan" />
+    <result column="market_expr" jdbcType="VARCHAR" property="marketExpr" />
+    <result column="tag_id" jdbcType="VARCHAR" property="tagId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, discount_id, discount_name, discount_desc, discount_type, market_plan, market_expr, 
+    tag_id, create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.yyz.infrastructure.dao.po.GroupBuyDiscountExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from group_buy_discount
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from group_buy_discount
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from group_buy_discount
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyz.infrastructure.dao.po.GroupBuyDiscountExample">
+    delete from group_buy_discount
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyz.infrastructure.dao.po.GroupBuyDiscount">
+    insert into group_buy_discount (id, discount_id, discount_name, 
+      discount_desc, discount_type, market_plan, 
+      market_expr, tag_id, create_time, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{discountId,jdbcType=VARCHAR}, #{discountName,jdbcType=VARCHAR}, 
+      #{discountDesc,jdbcType=VARCHAR}, #{discountType,jdbcType=BIT}, #{marketPlan,jdbcType=VARCHAR}, 
+      #{marketExpr,jdbcType=VARCHAR}, #{tagId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyz.infrastructure.dao.po.GroupBuyDiscount">
+    insert into group_buy_discount
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="discountId != null">
+        discount_id,
+      </if>
+      <if test="discountName != null">
+        discount_name,
+      </if>
+      <if test="discountDesc != null">
+        discount_desc,
+      </if>
+      <if test="discountType != null">
+        discount_type,
+      </if>
+      <if test="marketPlan != null">
+        market_plan,
+      </if>
+      <if test="marketExpr != null">
+        market_expr,
+      </if>
+      <if test="tagId != null">
+        tag_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="discountId != null">
+        #{discountId,jdbcType=VARCHAR},
+      </if>
+      <if test="discountName != null">
+        #{discountName,jdbcType=VARCHAR},
+      </if>
+      <if test="discountDesc != null">
+        #{discountDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="discountType != null">
+        #{discountType,jdbcType=BIT},
+      </if>
+      <if test="marketPlan != null">
+        #{marketPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="marketExpr != null">
+        #{marketExpr,jdbcType=VARCHAR},
+      </if>
+      <if test="tagId != null">
+        #{tagId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyz.infrastructure.dao.po.GroupBuyDiscountExample" resultType="java.lang.Long">
+    select count(*) from group_buy_discount
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update group_buy_discount
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.discountId != null">
+        discount_id = #{record.discountId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.discountName != null">
+        discount_name = #{record.discountName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.discountDesc != null">
+        discount_desc = #{record.discountDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.discountType != null">
+        discount_type = #{record.discountType,jdbcType=BIT},
+      </if>
+      <if test="record.marketPlan != null">
+        market_plan = #{record.marketPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.marketExpr != null">
+        market_expr = #{record.marketExpr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tagId != null">
+        tag_id = #{record.tagId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update group_buy_discount
+    set id = #{record.id,jdbcType=BIGINT},
+      discount_id = #{record.discountId,jdbcType=VARCHAR},
+      discount_name = #{record.discountName,jdbcType=VARCHAR},
+      discount_desc = #{record.discountDesc,jdbcType=VARCHAR},
+      discount_type = #{record.discountType,jdbcType=BIT},
+      market_plan = #{record.marketPlan,jdbcType=VARCHAR},
+      market_expr = #{record.marketExpr,jdbcType=VARCHAR},
+      tag_id = #{record.tagId,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyz.infrastructure.dao.po.GroupBuyDiscount">
+    update group_buy_discount
+    <set>
+      <if test="discountId != null">
+        discount_id = #{discountId,jdbcType=VARCHAR},
+      </if>
+      <if test="discountName != null">
+        discount_name = #{discountName,jdbcType=VARCHAR},
+      </if>
+      <if test="discountDesc != null">
+        discount_desc = #{discountDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="discountType != null">
+        discount_type = #{discountType,jdbcType=BIT},
+      </if>
+      <if test="marketPlan != null">
+        market_plan = #{marketPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="marketExpr != null">
+        market_expr = #{marketExpr,jdbcType=VARCHAR},
+      </if>
+      <if test="tagId != null">
+        tag_id = #{tagId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyz.infrastructure.dao.po.GroupBuyDiscount">
+    update group_buy_discount
+    set discount_id = #{discountId,jdbcType=VARCHAR},
+      discount_name = #{discountName,jdbcType=VARCHAR},
+      discount_desc = #{discountDesc,jdbcType=VARCHAR},
+      discount_type = #{discountType,jdbcType=BIT},
+      market_plan = #{marketPlan,jdbcType=VARCHAR},
+      market_expr = #{marketExpr,jdbcType=VARCHAR},
+      tag_id = #{tagId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
